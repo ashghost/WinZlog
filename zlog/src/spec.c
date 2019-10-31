@@ -167,8 +167,11 @@ static int zlog_spec_write_srcfile(zlog_spec_t * a_spec, zlog_thread_t * a_threa
 static int zlog_spec_write_srcfile_neat(zlog_spec_t * a_spec, zlog_thread_t * a_thread, zlog_buf_t * a_buf)
 {
 	char *p;
-
-	if ((p = strrchr(a_thread->event->file, '/')) != NULL) {
+#ifdef _WIN32
+  if ((p = strrchr(a_thread->event->file, '\\')) != NULL) {
+#elif
+  if ((p = strrchr(a_thread->event->file, '/')) != NULL) {
+#endif
 		return zlog_buf_append(a_buf, p + 1,
 			(char*)a_thread->event->file + a_thread->event->file_len - p - 1);
 	} else {

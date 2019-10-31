@@ -36,7 +36,6 @@
 
 #ifdef _MSC_VER
 #define DEF_TIME_FMT "%Y-%m-%d %H:%M:%S"
-#define snprintf _snprintf_s 
 #else
 #define DEF_TIME_FMT "%F %T"
 #endif
@@ -50,7 +49,7 @@
 #define ZLOG_CONF_DEFAULT_RELOAD_CONF_PERIOD 0
 #define ZLOG_CONF_DEFAULT_FSYNC_PERIOD 0
 #ifdef _MSC_VER
-#define ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE "d:/tmp/zlog.lock"
+#define ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE "./zlog.lock"
 #else
 #define ZLOG_CONF_BACKUP_ROTATE_LOCK_FILE "/tmp/zlog.lock"
 #endif
